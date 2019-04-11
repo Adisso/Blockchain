@@ -2,17 +2,12 @@ package com.company;
 import java.util.Date;
 
 public class Block {
-
-
     public String hash;
     public String previousHash;
-    private String data; //our data will be a simple message.
+    private String data; 
     private long timeStamp; //as number of milliseconds since 1/1/1970.
     private int nonce;
 
-
-
-    //Block Constructor.
     public Block(String data,String previousHash ) {
         this.data = data;
         this.previousHash = previousHash;
@@ -20,15 +15,13 @@ public class Block {
         this.hash = calculateHash(); //Making sure we do this after we set the other values.
     }
 
-
     //Calculate new hash based on blocks contents
     public String calculateHash() {
         String calculatedhash = StringUtil.applySha256(
                 previousHash +
-                        Long.toString(timeStamp) +
-                        Integer.toHexString(nonce)+
-                        data
-                        );
+                Long.toString(timeStamp) +
+                Integer.toHexString(nonce)+
+                data);
         return calculatedhash;
     }
 
